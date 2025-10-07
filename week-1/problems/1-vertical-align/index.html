@@ -1,42 +1,31 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizontal Align</title>
+    <title>Document</title>
     <style>
-        .container {
-            width: 1200px;
-            margin: 0 auto;
-            background-color: red;
-        }
-        .content {
-            height: 500px;
-        }
-        .vertical-center {
+        .container{
             display: flex;
             justify-content: center;
-            height: 100%;
-            flex-direction: column;
         }
-        .horizontal-center {
-            margin: 0 auto;
+        .box{
+            background-color: red;
+            height: 600px;
+            width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <div class="content">
-            <div class="vertical-center" style="background-color: yellow;">
-                <div class="horizontal-center">
-                    <h1>Hello World</h1>
-                </div>
+        <div class="box">
+            <div class="vcenter">
+                hello world!!
             </div>
         </div>
     </div>
 </body>
-
 </html>
