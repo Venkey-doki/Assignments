@@ -6,6 +6,21 @@
 
 function isAnagram(str1, str2) {
 
+	if (str1.length != str2.length) { 
+		return false
+	}
+	//at first i give no argument in the split so what it did is give entire string as single entity in a array , so i have a empty string as a paramanter so it splited each and every letter in the string
+	// str1 = str1.toLowerCase().split('').sort().join()
+	// str2 = str2.toLowerCase().split('').sort().join()
+
+	str1 = str1.toLowerCase().split('').sort().join()
+	str2 = str2.toLowerCase().split('').sort().join()
+
+	if (str1 === str2) {
+		return true
+	} else { 
+		return false
+	}
 }
 
 module.exports = isAnagram;
