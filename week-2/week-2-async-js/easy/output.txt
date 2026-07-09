@@ -1,0 +1,2 @@
+Hello guys, this is KNOX!! I am Learning JavaScript
+appending data to the output file
