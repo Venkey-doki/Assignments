@@ -14,7 +14,26 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+	let result = [];
+	let categoriestotals = {};
+	transactions.forEach(element => {
+		if (categoriestotals[element.category] == undefined) {
+			categoriestotals[element.category] = element.price
+		} else { 
+			categoriestotals[element.category] += element.price
+		}
+	});
+	// i stumbled up on how can i format the response in the desired way , then used another loop to structure my answer
+	for (let category in categoriestotals) { 
+		result.push(
+			{
+				category: category,
+				totalSpent: categoriestotals[category]
+			}
+		)
+	}
+
+	return result;
 }
 
 module.exports = calculateTotalSpentByCategory;
