@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week 3 | easy</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: #212121;
+            position: relative;
+            height: 100vh;
+        }
+        .container{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .colours{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .red{
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .blue{
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pink{
+            background-color: pink;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .green{
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .yellow{
+            background-color: yellow;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #addColour{
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="colours">
+            <li class = "red">RED</li>
+            <li class = "blue">BLUE</li>
+            <li class = "pink">PINK</li>
+            <li class = "green">GREEN</li>
+            <li class = "yellow">YELLOW</li>
+            <button id="addColour"> + </button>
+        </ul>
+    </div>
+</body>
+<script>
+    const colours = document.querySelector('.colours');
+    const addColour = document.getElementById('addColour');
+
+    colours.addEventListener('click', (e) => {
+        if(e.target.tagName === 'LI'){
+            document.body.style.backgroundColor = e.target.className;
+        }
+    });
+
+    addColour.addEventListener('click', () => {
+        const newColour = prompt('Enter a colour name or hex code:');
+        if(newColour){
+            const li = document.createElement('li');
+            li.textContent = newColour.toUpperCase();
+            li.style.backgroundColor = newColour;
+            li.style.color = 'white';
+            li.style.padding = '10px 20px';
+            li.style.borderRadius = '5px';
+            li.style.cursor = 'pointer';
+            colours.insertBefore(li, addColour);
+        }
+    });
+</script>
+</html>
