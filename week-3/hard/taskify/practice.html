@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #212121
+        }
+        .card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 300px;
+            width: 400px;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+
+        </div>
+    </div>
+</body>
+<script>
+// Drag and drop functionality
+
+    let newx = 0, newy = 0, x = 0, y = 0;
+    const card = document.querySelector('.card');
+    // Add event listener for mousedown event
+    card.addEventListener('mousedown', (e) => {
+        // Calculate the initial position of the card
+        //x is the distance between the mouse click and the left edge of the card
+        //y is the distance between the mouse click and the top edge of the card
+        //e.clientX and e.clientY are the coordinates of the mouse click relative to the viewport
+        //then e.clientX - newx is the distance between the mouse click and the left edge of the card
+        //then e.clientY - newy is the distance between the mouse click and the top edge of the card
+        x = e.clientX - newx;
+        y = e.clientY - newy;
+        card.style.cursor = 'grabbing';
+        // Add event listeners for mousemove and mouseup events
+        //why we add event listeners for mousemove and mouseup events inside the mousedown event listener?
+        //because we want to track the mouse movement only when the mouse is pressed down on the card. If we add the event listeners outside of the mousedown event listener, the mousemove and mouseup events will be triggered even when the mouse is not pressed down on the card, which is not what we want. By adding the event listeners inside the mousedown event listener, we ensure that the mousemove and mouseup events are only tracked when the mouse is pressed down on the card.
+        document.addEventListener('mousemove', mouseMove);
+        document.addEventListener('mouseup', mouseUp);
+    });
+
+    function mouseMove(e) {
+        // Calculate the new position of the card
+        //newx is the distance between the mouse click and the left edge of the card
+        //newy is the distance between the mouse click and the top edge of the card
+        newx = e.clientX - x;
+        newy = e.clientY - y;
+        // Update the position of the card
+        card.style.transform = `translate(${newx}px, ${newy}px)`;
+    }
+
+    function mouseUp() {
+        // Remove the event listeners for mousemove and mouseup events
+        card.style.cursor = 'grab';
+        document.removeEventListener('mousemove', mouseMove);
+        document.removeEventListener('mouseup', mouseUp);
+    }
+
+
+</script>
+</html>
