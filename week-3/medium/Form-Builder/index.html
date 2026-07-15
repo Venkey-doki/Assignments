@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            gap: 2rem;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .form-builder,
+        .form-preview {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input,
+        select,
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section class="form-builder">
+            <h2>Form Builder</h2>
+            <label for="items">Select an input type:</label>
+            <select name="items" id="items">
+                <option value="text">Text Input</option>
+                <option value="email">Email Input</option>
+                <option value="number">Number Input</option>
+                <option value="date">Date Input</option>
+            </select>
+
+            <label for="label">Enter label for input:</label>
+            <input type="text" id="label" placeholder="Enter label for input">
+
+            <button id="add-btn">
+                Add
+            </button>
+        </section>
+        <section class="form-preview">
+            <h2>Form Preview</h2>
+            <form id="form-preview">
+                <!-- Form inputs will be added here -->
+            </form>
+        </section>
+    </main>
+</body>
+
+<script>
+    const itemEl = document.getElementById('items')
+    const labelEl = document.getElementById('label')
+    const addBtn = document.getElementById('add-btn')
+    const formPreview = document.getElementById('form-preview')
+
+    addBtn.addEventListener('click', () => {
+        const div = document.createElement('div')
+        const label = document.createElement('label')
+        const input = document.createElement('input')
+        switch (itemEl.value) {
+            case 'text':
+                input.type = 'text'
+                break
+            case 'email':
+                input.type = 'email'
+                break
+            case 'number':
+                input.type = 'number'
+                break
+            case 'date':
+                input.type = 'date'
+                break
+        }
+        label.textContent = labelEl.value
+        div.appendChild(label)
+        div.appendChild(input)
+        formPreview.appendChild(div)
+    })
+</script>
+</html>
